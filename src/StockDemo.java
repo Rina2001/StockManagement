@@ -1,20 +1,31 @@
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
 import data.DataTransaction;
 import data.Product;
 import manipulate.Commander;
 
 import static java.lang.System.out;
+
+import java.text.DateFormat;
 public class StockDemo {
 	static ArrayList<Product> list =new ArrayList();
 	
 	public static void main(String[] args) {
 
-		DataTransaction dt=new DataTransaction();
-
-		for(int x=1;x<=1E6;x++){
-			Product p=new Product(x,"Gloria",2,5);//list.add(p);
-			Commander.list.add(p);
-		}
+//		DataTransaction dt=new DataTransaction();
+//		String date=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
+//		System.out.println(date);
+//		long start=System.currentTimeMillis();
+//		for(int i=0 ;i<10_000_000;i++){
+//			dt.write(list, new Product(i,"product",11,10,date));
+//			//list.add(new Product(i,"product",11,10,date));
+//		}
+//		
+//		long stop=System.currentTimeMillis();
+//		System.out.println(stop-start);
+//		dt.display(list, 1, 10_000_000);
 //		display menu  command prom
 		new Commander().menu();
 		

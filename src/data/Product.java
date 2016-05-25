@@ -1,7 +1,12 @@
 package data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+
+import KeboardReder.ScannerRead;
+
 import java.text.DateFormat;
 
 public class Product implements Serializable{
@@ -25,16 +30,16 @@ public class Product implements Serializable{
 		name="";
 		unitprice=0.0;
 		qty=0;
-		importedDate=DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
+		importedDate="";
 	}
 	
 	//Constructor with parameters
-	public Product(int id,String name, double unitprice, int qty){
+	public Product(int id,String name, double unitprice, int qty,String date){
 		this.id=id;
 		this.name=name;
 		this.unitprice=unitprice;
 		this.qty=qty;
-		importedDate=DateFormat.getDateInstance(DateFormat.SHORT).format(new Date());
+		importedDate=date;
 	}
 	
 	public int getId() {
@@ -62,6 +67,30 @@ public class Product implements Serializable{
 	public String getImportedDate() {
 		return importedDate;
 	}
+	public void setImportedDate(String importedDate) {
+		this.importedDate = importedDate;
+	}
+/*
+ * @return Proudct object
+ * 
+ */
+	public static Product productInsert(){
+		Product p=new Product();
+		
+		System.out.print("Enter Product name: ");
+		p.setName(ScannerRead.ReadString());
+		System.out.println();
+		System.out.print("Enter Product Unit Price: ");
+		p.setUnitprice(ScannerRead.ReadInt());
+		System.out.println();
+		System.out.print("Enter Product Unit Quality: ");
+		p.setQty(ScannerRead.ReadInt());
+		p.setImportedDate(p.GetDate());
+		
+		return p;
+	}
+	
+	
 	
 	@Override
 	public String toString(){
@@ -72,4 +101,7 @@ public class Product implements Serializable{
 		return  "ID          NAME       PRICE      QTY      Import_Data";
 	}
 
+	public String GetDate(){
+		return DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
+	}
 }
