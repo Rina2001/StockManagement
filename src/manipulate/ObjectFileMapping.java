@@ -1,8 +1,6 @@
 package manipulate;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import static java.lang.System.out;
 import data.Product;
 /*
@@ -18,12 +16,12 @@ public final class ObjectFileMapping {
 	public static void objectWriter(ArrayList<Product> pro,String fileName)throws Exception{
 		FileOutputStream outStr=new FileOutputStream(fileName);
 		ObjectOutputStream objectOutputStream;
-//		long start=System.currentTimeMillis();
+
 			objectOutputStream=new ObjectOutputStream(outStr);
 				objectOutputStream.writeObject(pro);
-				out.println("Done\n");
+				out.println("Done\n"); 
 				objectOutputStream.close();
-//			
+//		long start=System.currentTimeMillis();
 //		long stop=System.currentTimeMillis();
 //		System.out.println(stop-start);
 	}
@@ -34,7 +32,7 @@ public final class ObjectFileMapping {
 			bfInput=new BufferedInputStream(new FileInputStream(fileName));
 			ObjectInputStream obj=new ObjectInputStream(bfInput);
 				pro=(ArrayList<Product>) obj.readObject();
-			obj.close();
+				obj.close();
 		return pro;
 	}
 	

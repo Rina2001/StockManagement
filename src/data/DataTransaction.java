@@ -51,13 +51,11 @@ public class DataTransaction implements DataManipulation{
 	    tb.setColumnWidth(4, 10, 16);
 	    
 		tb.addCell("ID", cs);
-		tb.addCell("Name");
+		tb.addCell("Name",cs);
 		tb.addCell("Unit Price",cs);
 		tb.addCell("Qty",cs);
-		tb.addCell("Imported Date");
-				
-//		display data 
-		//out.println(Product.getTitle());
+		tb.addCell("Imported Date",cs);
+		
 		for(Product record : list){
 			tb.addCell(String.valueOf(record.getId()),cs);
 			tb.addCell(record.getName());

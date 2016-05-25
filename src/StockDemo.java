@@ -14,33 +14,18 @@ public class StockDemo {
 	static ArrayList<Product> list =new ArrayList();
 	
 	public static void main(String[] args)throws Exception {
-//		new Commander().menu();
-		DataTransaction dt=new DataTransaction();
+		DataTransaction dataTransact=new DataTransaction();
 		String date=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
-//		System.out.println(date);
-<<<<<<< HEAD
-=======
+		
 		long start=System.currentTimeMillis();
-		for(int i=0 ;i<1000;i++){
-			dt.write(list, new Product(i,"product",11,10,date));
-			//list.add(new Product(i,"product",11,10,date));
+		for(int i=0 ;i<1E6;i++){
+			dataTransact.write(list, new Product(i,"product",11,10,date));
 		}
+		ObjectFileMapping.objectWriter(list,"Storage/Product.bin");
 		long stop=System.currentTimeMillis();
 		System.out.println(stop-start);
-		dt.display(list, 1, 16);
-//		display menu  command prom
 		
->>>>>>> origin/master
-		
-//		for(int i=0 ;i<1_000_000;i++){
-//			dt.write(list, new Product(i,"product",11,10,date));
-//		}
-//		ObjectFileMapping.objectWriter(list,"Storage/Product.bin");
-		//ObjectFileMapping.objectWriter(list, "Storage/Product.bin");
      	new Commander().menu();
-
-//		
-//		display Content data
 //			dt.display(list,24 ,10);
 //		System.out.println("\n\nAfter update product");
 //		System.out.println("Search");
