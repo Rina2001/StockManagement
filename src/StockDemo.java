@@ -19,11 +19,12 @@ public class StockDemo {
 		
 		long start=System.currentTimeMillis();
 		for(int i=0 ;i<1E6;i++){
-			dataTransact.write(list, new Product(i,"product",11,10,date));
+			dataTransact.write(list, new Product(i,"Coca",11,10,date));
 		}
-		ObjectFileMapping.objectWriter(list,"Storage/Product.bin");
 		long stop=System.currentTimeMillis();
 		System.out.println(stop-start);
+		ObjectFileMapping.objectWriter(list,"Storage/Product.bin");
+		
 		
      	new Commander().menu();
 //			dt.display(list,24 ,10);
