@@ -18,11 +18,10 @@ public class StockDemo {
 		String date=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
 //		System.out.println(date);
 		long start=System.currentTimeMillis();
-		for(int i=0 ;i<10_000_000;i++){
+		for(int i=0 ;i<1000;i++){
 			dt.write(list, new Product(i,"product",11,10,date));
 			//list.add(new Product(i,"product",11,10,date));
 		}
-		
 		long stop=System.currentTimeMillis();
 		System.out.println(stop-start);
 		dt.display(list, 1, 16);
