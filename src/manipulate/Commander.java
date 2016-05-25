@@ -20,6 +20,10 @@ public  class Commander {
 	
 	
 	public void menu()throws Exception{
+//		pro=ObjectFileMapping.objectReader("Storage/Product.bin" );
+//		System.out.println("List "+pro.size());	
+//		dt.display(pro,1 ,100);
+		
 		out.println(" ______________________________________________________________________________________");
 		out.println("| *)Display | W)rite | R|ead | U)pdate | F)irst | P)revious | N)ext | L)ast            |");
 		out.println("|     S)earch | G)oto | Se)t row | Sa)ve | Ba)ck up Re)store | H)elp | E)xit           |");
@@ -34,7 +38,6 @@ public  class Commander {
 						dt.display(pro,1 ,100);
 						this.menu();
 						break;
-					
 			case "w":	dt.write(pro,Product.productInsert());
 						this.menu();
 						break;
@@ -55,7 +58,11 @@ public  class Commander {
 				break;
 			case "se":	//set row
 				break;
-			case "sa":	 ObjectFileMapping.objectWriter(pro,"Storage/Product.bin" );
+			case "sa":		Long start=System.currentTimeMillis();
+								
+									ObjectFileMapping.objectWriter(pro,"Storage/Product.bin" );
+							long stop=System.currentTimeMillis();
+								System.out.println("Time "+(stop-start));	
 				break; //save record
 			case "B":
 				break;// back up file

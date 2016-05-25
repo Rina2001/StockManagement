@@ -18,14 +18,12 @@ public class StockDemo {
 		String date=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
 		
 		long start=System.currentTimeMillis();
-		for(int i=0 ;i<1E6;i++){
+		for(int i=1 ;i<1E6;i++){
 			dataTransact.write(list, new Product(i,"Coca",11,10,date));
 		}
+		ObjectFileMapping.objectWriter(list, "Storage/Product.bin");
 		long stop=System.currentTimeMillis();
 		System.out.println(stop-start);
-		ObjectFileMapping.objectWriter(list,"Storage/Product.bin");
-		
-		
      	new Commander().menu();
 //			dt.display(list,24 ,10);
 //		System.out.println("\n\nAfter update product");
