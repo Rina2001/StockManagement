@@ -98,7 +98,7 @@ public class Product implements Serializable{
 		
 	}
 	public static String getTitle(){
-		return  "ID          NAME       PRICE      QTY      Import_Data";
+		return  "ID          NAME       PRICE      QTY      Import_Date";
 	}
 
 	public String GetDate(){
