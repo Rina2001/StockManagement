@@ -18,6 +18,19 @@ public class StockDemo {
 		DataTransaction dt=new DataTransaction();
 		String date=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
 //		System.out.println(date);
+<<<<<<< HEAD
+=======
+		long start=System.currentTimeMillis();
+		for(int i=0 ;i<1000;i++){
+			dt.write(list, new Product(i,"product",11,10,date));
+			//list.add(new Product(i,"product",11,10,date));
+		}
+		long stop=System.currentTimeMillis();
+		System.out.println(stop-start);
+		dt.display(list, 1, 16);
+//		display menu  command prom
+		
+>>>>>>> origin/master
 		
 //		for(int i=0 ;i<1_000_000;i++){
 //			dt.write(list, new Product(i,"product",11,10,date));

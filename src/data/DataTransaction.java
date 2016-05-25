@@ -3,6 +3,13 @@ package data;
 import static java.lang.System.out;
 
 import java.util.ArrayList;
+
+import org.nocrala.tools.texttablefmt.BorderStyle;
+import org.nocrala.tools.texttablefmt.CellStyle;
+import org.nocrala.tools.texttablefmt.CellStyle.HorizontalAlign;
+import org.nocrala.tools.texttablefmt.ShownBorders;
+import org.nocrala.tools.texttablefmt.Table;
+
 import manipulate.DataManipulation;
 
 public class DataTransaction implements DataManipulation{
@@ -34,11 +41,31 @@ public class DataTransaction implements DataManipulation{
 		for(int i=start;i<end;i++){
 			list.add(table.get(i));
 		}
+		
+		CellStyle cs = new CellStyle(HorizontalAlign.center);
+		Table tb = new Table(5, BorderStyle.UNICODE_BOX_DOUBLE_BORDER_WIDE, ShownBorders.ALL);
+	    tb.setColumnWidth(0, 10, 14);
+	    tb.setColumnWidth(1, 25, 30);
+	    tb.setColumnWidth(2, 10, 16);
+	    tb.setColumnWidth(3, 10, 16);
+	    tb.setColumnWidth(4, 10, 16);
+	    
+		tb.addCell("ID", cs);
+		tb.addCell("Name");
+		tb.addCell("Unit Price",cs);
+		tb.addCell("Qty",cs);
+		tb.addCell("Imported Date");
+				
 //		display data 
-		out.println(Product.getTitle());
+		//out.println(Product.getTitle());
 		for(Product record : list){
-			out.println(record.toString());
+			tb.addCell(String.valueOf(record.getId()),cs);
+			tb.addCell(record.getName());
+			tb.addCell(String.valueOf(record.getUnitprice()),cs);
+			tb.addCell(String.valueOf(record.getQty()),cs);
+			tb.addCell(record.getImportedDate(),cs);
 		}
+		out.println(tb.render());
 		return list;
 	}
 
