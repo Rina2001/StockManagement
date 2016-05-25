@@ -5,6 +5,7 @@ import java.util.Locale;
 import data.DataTransaction;
 import data.Product;
 import manipulate.Commander;
+import manipulate.ObjectFileMapping;
 
 import static java.lang.System.out;
 
@@ -12,23 +13,20 @@ import java.text.DateFormat;
 public class StockDemo {
 	static ArrayList<Product> list =new ArrayList();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)throws Exception {
 //		new Commander().menu();
 		DataTransaction dt=new DataTransaction();
 		String date=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.UK).format(new Date());
 //		System.out.println(date);
-		long start=System.currentTimeMillis();
-		for(int i=0 ;i<10_000_000;i++){
-			dt.write(list, new Product(i,"product",11,10,date));
-			//list.add(new Product(i,"product",11,10,date));
-		}
 		
-		long stop=System.currentTimeMillis();
-		System.out.println(stop-start);
-		dt.display(list, 1, 16);
-//		display menu  command prom
-		
-		
+//		for(int i=0 ;i<1_000_000;i++){
+//			dt.write(list, new Product(i,"product",11,10,date));
+//		}
+//		ObjectFileMapping.objectWriter(list,"Storage/Product.bin");
+		//ObjectFileMapping.objectWriter(list, "Storage/Product.bin");
+     	new Commander().menu();
+
+//		
 //		display Content data
 //			dt.display(list,24 ,10);
 //		System.out.println("\n\nAfter update product");

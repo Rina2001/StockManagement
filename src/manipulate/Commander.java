@@ -13,54 +13,59 @@ import data.Product;
  * @Class Commander  is used for control attitude of program
  */
 public  class Commander {
-	protected ArrayList<Product> t=new ArrayList<>();
+	private ArrayList<Product> pro=new ArrayList<>();
 	DataTransaction dt=new DataTransaction();
 		
-	public void menu(){
+	
+	
+	
+	public void menu()throws Exception{
 		out.println(" ______________________________________________________________________________________");
 		out.println("| *)Display | W)rite | R|ead | U)pdate | F)irst | P)revious | N)ext | L)ast            |");
 		out.println("|     S)earch | G)oto | Se)t row | Sa)ve | Ba)ck up Re)store | H)elp | E)xit           |");
 		out.println("|______________________________________________________________________________________|");	
-		out.println("Command :--->");
+		out.print("Command :--->  ");
 
 		String cmd=new Scanner(System.in).next();
-		
 		switch (cmd.toLowerCase()) {
-		case "*": dt.display(t,10 ,100000);
-		this.menu();
-			break;
-		case "w":
-			dt.write(t,Product.productInsert());
-			this.menu();
-		break;
+//					Method display
+			case "*":   
+						pro=ObjectFileMapping.objectReader("Storage/Product.bin" );
+						dt.display(pro,1 ,100);
+						this.menu();
+						break;
+					
+			case "w":	dt.write(pro,Product.productInsert());
+						this.menu();
+						break;
 //	
-//		case "r":dt.read(table, recordId);break;
+//			case "r":	dt.read(table, recordId);break;
 //		
-//		case "u": dt.update(table, proId, newRecord);break;
+//			case "u": 	dt.update(table, proId, newRecord);break;
 //		
-		case "f":
+			case "f":
 				break;	 // Display First; 
-		case "n":
+			case "n":
 				break;	 // Next Content;
-		case "l":
+			case "l":
 				break;	//Last Record;
-		case "s":
+			case "s":
 				break;	//search record;
-		case "g":
+			case "g":
 				break;
-		case "se":		//set row
+			case "se":		//set row
 				break;
-		case "sa":
+			case "sa":	 ObjectFileMapping.objectWriter(pro,"Storage/Product.bin" );
 				break; //save record
-		case "B":
+			case "B":
 				break;// back up file
-		case "re":
+			case "re":
 				break;//restore
-		case "h":
+			case "h":
 				break;//help 
-		case "e":System.exit(0);
+			case "e":System.exit(0);
 			
-		default:out.println("Invalid Command\n");
+			default:out.println("Invalid Command\n");
 			menu();
 		}
 	}
