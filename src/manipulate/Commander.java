@@ -4,6 +4,7 @@ import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import KeboardReder.ScannerRead;
 import data.DataTransaction;
 import data.Product;
 /**
@@ -12,7 +13,7 @@ import data.Product;
  * @Class Commander  is used for control attitude of program
  */
 public  class Commander {
-	public static ArrayList<Product> list =new ArrayList();
+	protected ArrayList<Product> t=new ArrayList<>();
 	DataTransaction dt=new DataTransaction();
 		
 	public void menu(){
@@ -21,12 +22,17 @@ public  class Commander {
 		out.println("|     S)earch | G)oto | Se)t row | Sa)ve | Ba)ck up Re)store | H)elp | E)xit           |");
 		out.println("|______________________________________________________________________________________|");	
 		out.println("Command :--->");
+
 		String cmd=new Scanner(System.in).next();
 		
 		switch (cmd.toLowerCase()) {
-		case "*": dt.display(list,1 ,100000);
+		case "*": dt.display(t,10 ,100000);
+		this.menu();
 			break;
-//		case "w":dt.write(table, record);break;
+		case "w":
+			dt.write(t,Product.productInsert());
+			this.menu();
+		break;
 //	
 //		case "r":dt.read(table, recordId);break;
 //		
