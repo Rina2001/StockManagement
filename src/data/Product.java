@@ -19,6 +19,10 @@ public class Product implements Serializable{
 	//Fields For Product
 	
 	private int id;
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private String name;
 	private double unitprice;
 	private int qty;
@@ -26,7 +30,7 @@ public class Product implements Serializable{
 	
 	//Default Constructor
 	public Product() {
-		id++;
+		this.id=0;
 		name="";
 		unitprice=0.0;
 		qty=0;
@@ -77,19 +81,22 @@ public class Product implements Serializable{
 	public static Product productInsert(){
 		Product p=new Product();
 		
-		System.out.print("Enter Product name: ");
+		System.out.print("Enter Product name : ");
 		p.setName(ScannerRead.ReadString());
-		System.out.println();
-		System.out.print("Enter Product Unit Price: ");
+//		System.out.println();
+		System.out.print("Enter Product Unit Price : ");
 		p.setUnitprice(ScannerRead.ReadInt());
-		System.out.println();
-		System.out.print("Enter Product Unit Quality: ");
+//		System.out.println();
+		System.out.print("Enter Product Unit Quality : ");
 		p.setQty(ScannerRead.ReadInt());
 		p.setImportedDate(p.GetDate());
 		
 		return p;
 	}
-	
+	public static int ProductRead(){
+		System.out.print("Enter Product Id : ");
+		return ScannerRead.ReadInt();
+	}
 	
 	
 	@Override

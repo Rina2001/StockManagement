@@ -12,6 +12,15 @@ public class DataTransaction implements DataManipulation{
 	 */
 	@Override
 	public Product write(ArrayList<Product> table, Product record) {
+		//increase product Id
+		Product pr=null;
+		if(table.size()>=1){
+			pr=table.get(table.size()-1);
+			record.setId(pr.getId()+1);
+		}else{
+			record.setId(1);
+		}
+		
 		table.add(record);
 		return record;
 	}
@@ -43,9 +52,22 @@ public class DataTransaction implements DataManipulation{
 	}
 
 	@Override
-	public Object read(ArrayList<Product> table, int recordId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Product read(ArrayList<Product> table, int recordId) {
+		boolean rt=false;
+		int index=0;
+		Product product=null;
+		for(Product p:table){
+			if(p.getId()==recordId){
+				rt=true; break;
+			}else{
+				rt=false;
+				index++;
+			}
+		}
+		if(rt){
+			product=table.get(index);
+		}
+		return product;
 	}
 	@Override
 	public boolean update(ArrayList<Product> table, int proId, Product newRecord) {
