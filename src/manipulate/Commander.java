@@ -20,10 +20,8 @@ public  class Commander {
 	
 	
 	public void menu()throws Exception{
-//		pro=ObjectFileMapping.objectReader("Storage/Product.bin" );
-//		System.out.println("List "+pro.size());	
-//		dt.display(pro,1 ,100);
 		
+		 pro=ObjectFileMapping.objectReader("Storage/Product.bin" );
 		out.println(" ______________________________________________________________________________________");
 		out.println("| *)Display | W)rite | R|ead | U)pdate | F)irst | P)revious | N)ext | L)ast            |");
 		out.println("|     S)earch | G)oto | Se)t row | Sa)ve | Ba)ck up Re)store | H)elp | E)xit           |");
@@ -33,18 +31,19 @@ public  class Commander {
 		String cmd=new Scanner(System.in).next();
 		switch (cmd.toLowerCase()) {
 //					Method display
-			case "*":   
-						pro=ObjectFileMapping.objectReader("Storage/Product.bin" );
-						dt.display(pro,1 ,100);
+			case "*":  dt.display(pro,1 ,100);
 						this.menu();
-						break;
+				break;
+						
 			case "w":	dt.write(pro,Product.productInsert());
 						this.menu();
-						break;
+				break;
 //	
 //			case "r":	dt.read(table, recordId);break;
 //		
-//			case "u": 	dt.update(table, proId, newRecord);break;
+			case "u": 	out.print("Producr ID:"); 
+						out.println(dt.update(pro, ScannerRead.ReadInt(), Product.productInsert()));
+				break;
 //		
 			case "f":
 				break;	 // Display First; 
@@ -59,8 +58,7 @@ public  class Commander {
 			case "se":	//set row
 				break;
 			case "sa":		Long start=System.currentTimeMillis();
-								
-									ObjectFileMapping.objectWriter(pro,"Storage/Product.bin" );
+							ObjectFileMapping.objectWriter(pro,"Storage/Product.bin" );
 							long stop=System.currentTimeMillis();
 								System.out.println("Time "+(stop-start));	
 				break; //save record
