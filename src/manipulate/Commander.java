@@ -53,7 +53,7 @@ public  class Commander {
 				break;	//search record;
 			case "g":
 				break;
-			case "se":		//set row
+			case "se":	//set row
 				break;
 			case "sa":	 ObjectFileMapping.objectWriter(pro,"Storage/Product.bin" );
 				break; //save record
