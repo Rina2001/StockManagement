@@ -16,14 +16,10 @@ public final class ObjectFileMapping {
 	public static void objectWriter(ArrayList<Product> pro,String fileName)throws Exception{
 		FileOutputStream outStr=new FileOutputStream(fileName);
 		ObjectOutputStream objectOutputStream;
-
 			objectOutputStream=new ObjectOutputStream(outStr);
 				objectOutputStream.writeObject(pro);
 				out.println("Done\n"); 
 				objectOutputStream.close();
-//		long start=System.currentTimeMillis();
-//		long stop=System.currentTimeMillis();
-//		System.out.println(stop-start);
 	}
 	
 	public static ArrayList<Product> objectReader(String fileName)throws Exception{
