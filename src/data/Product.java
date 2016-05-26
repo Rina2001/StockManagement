@@ -90,7 +90,10 @@ public class Product implements Serializable{
 		return p;
 	}
 	
-	
+	public static int ProductRead(){
+		System.out.print("Enter Product Id : ");
+		return ScannerRead.ReadInt();
+	}
 	
 	@Override
 	public String toString(){
