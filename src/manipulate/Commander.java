@@ -40,7 +40,22 @@ public  class Commander {
 				break;
 //	
 			case "r":
-				dt.write(list,Product.productInsert());
+				//get id of product form user enter 
+				int listId=0;	
+				//check if user enter out of product id in stock
+				do{
+					listId=Product.ProductRead();
+					System.out.println("ID you Enter don't have in the products record.Please enter again! ");
+				}while(dt.read(pro, listId)==null);
+				// after dt.read(list,listId)!=null;
+				//it can read the product from the list
+				Product product=dt.read(pro, listId);
+				System.out.println("--------------------------");
+				System.out.println("ID : " +product.getId());
+				System.out.println("Name : "+product.getName());
+				System.out.println("UnitPrice : "+product.getUnitprice());
+				System.out.println("Qualities : "+product.getQty());
+				System.out.println("DateInStock : "+product.getImportedDate());
 				this.menu();
 				break;
 //		
