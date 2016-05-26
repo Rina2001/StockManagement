@@ -39,7 +39,10 @@ public  class Commander {
 						this.menu();
 				break;
 //	
-//			case "r":	dt.read(table, recordId);break;
+			case "r":
+				dt.write(list,Product.productInsert());
+				this.menu();
+				break;
 //		
 			case "u": 	out.print("Producr ID:"); 
 						out.println(dt.update(pro, ScannerRead.ReadInt(), Product.productInsert()));
