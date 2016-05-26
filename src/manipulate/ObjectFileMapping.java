@@ -22,9 +22,10 @@ public final class ObjectFileMapping {
 	 */
 	public static void objectWriter(ArrayList<Product> pro,String fileName){
 		try{
-		FileOutputStream outStr=new FileOutputStream(fileName);
+		BufferedOutputStream bfOut;
 		ObjectOutputStream objectOutputStream;
-			objectOutputStream=new ObjectOutputStream(outStr);
+		bfOut=new BufferedOutputStream(new FileOutputStream(fileName));
+			objectOutputStream=new ObjectOutputStream(bfOut);
 				objectOutputStream.writeObject(pro);
 				out.println("Done\n"); 
 				objectOutputStream.close();
